@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="icon" href="/images/weather.png">
+    <style>
+        * {box-sizing: border-box;}
+        
+        .header {
+          overflow: hidden;
+          background-color: #2e2e2e;
+          padding: 10px 10px;
+          margin: 0;
+        }
+        
+        .header a {
+          float: left;
+          color: rgb(238, 238, 238);
+          text-align: center;
+          padding: 10px;
+          text-decoration: none;
+          font-size: 16px; 
+          line-height: 20px;
+          border-radius: 4px;
+        }
+        
+        .header a.logo {
+          font-size: 20px;
+          font-weight: bold;
+        }
+        
+        .header a:hover {
+          background-color: rgb(124, 124, 124);
+          color: black;
+        }
+        
+        .header a.active {
+          background-color: rgb(211, 89, 160);
+          color: white;
+        }
+        
+        .header-right {
+          float: right;
+        }
+        
+        @media screen and (max-width: 500px) {
+          .header a {
+            float: none;
+            display: block;
+            text-align: left;
+          }
+          
+          .header-right {
+            float: none;
+          }
+        }
+        /* Gist Embed - Dark Theme Styling - Thanks to MattD */
+  
+        /* Body */
+        .gist-data tbody { background-color: Black; }
+
+        /* Line Numbers */
+        .gist-data tbody td:nth-of-type(1) {
+          color: #2B91AF !important;
+        }
+
+        /* Code */
+        .gist-data tbody td:nth-of-type(2){
+          color: #FFFFFF !important;
+        }
+
+        /* Comments */
+        .pl-c
+        {
+          color: #57A64A !important;
+        }
+
+        /* Function */
+        .pl-k, tbody tr:first-child .blob-code, tbody tr:last-child .blob-code
+        {
+          color: #569CD6 !important;
+        }
+
+        /* Function Name */
+        .pl-en
+        {
+          color: #FFFFFF !important;
+        }
+
+        /* Function Method */
+        .pl-c1
+        {
+          color: #FFFFFF !important;
+        }
+        /* "'s around Strings */
+        .pl-pds
+        {
+          color: #D69D85 !important;
+        }
+
+        /* Strings */
+        .pl-s
+        {
+          color: #D69D85 !important;
+        }
+
+        .gist .gist-file .gist-meta {
+          background-color: #000000;
+        }        
+
+
+
+
+        footer{
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        background-color: rgb(22, 22, 22);
+        color: white;
+        text-align: center;
+    }   
+    </style>
+    <title>Express App | Static</title>
+</head>
+<body>
+    <div class="header">
+        <a href="/" class="logo">Local Host</a>
+        <div class="header-right">
+          <a class="home-link" href="/">Home</a>
+          <a class="about-link" href="/about">About</a>
+          <a class="api-link" href="/api">API</a>
+          <a class="static-link active" href="/static">Static</a>
+          <a class="four-link" href="/anyotherpage">404</a>
+        </div>
+    </div>
+
+    <div class="container">
+      <h1>Completely Static HTML File</h1>
+
+      <script src="https://gist.github.com/xidlegend/4df8a5535fb54ec04af243f7f05538c4.js"></script>
+
+      <p>Created by this 👇 guy</p>
+      <img style="max-width: 150px;" src="/images/me.jpg" alt="">
+    </div>
+
+    <footer>served by express using ejs by XiD Legend</footer> 
+</body>
+</html>

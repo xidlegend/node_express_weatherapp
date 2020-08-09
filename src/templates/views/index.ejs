@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/styles.css">
+    <title>Express App</title>
+    <link rel="icon" href="/images/weather.png">
+
+    <style>
+        .search-btn {
+            display: block;
+            padding: 8px;
+            margin-top: 20px;
+            margin-left: 1px;
+            border: none;
+            border-radius: 2px;
+            background-color: rgb(211, 89, 160);
+            color: rgb(226, 226, 226);
+        }
+
+        .weather-info {
+            display: none;
+            max-width: 60%;
+            padding: 15px;
+            margin-bottom: 50px;
+            background-color: rgb(27, 27, 27);
+        }
+    </style>
+
+</head>
+<body>
+
+    <!-- Header -->
+    <%- include('../partials/header') %> 
+    
+    <!-- Container -->
+    <div class="container">
+        <%- include('../partials/standard') %> 
+        <div class="weather-info">
+
+        </div>
+        <form action="weather" id="weather">
+            <input name="address" placeholder="Address" type="text" value="Thanesar">
+            <input name="country" placeholder="Country" type="text" value="India">
+            <button class="search-btn">Search</button>
+        </form>
+    </div>
+
+    
+
+    <!-- Footer -->
+    <%- include('../partials/footer') %> 
+
+    <script src="/js/app.js"></script>
+    <!-- Page Script -->
+    <script>
+        // Activate Navbar Link
+        document.querySelector('.home-link').classList.add('active');
+        // Set link to curent page
+        document.querySelector('.home-link').setAttribute('href', '#');
+
+        // HTML Elements
+        const weatherInfo = document.querySelector('.weather-info');
+        const form = document.forms.weather;
+        
+        //Form Submission Handler 
+        form.addEventListener('submit', e => {
+            e.preventDefault()
+
+            // Get FormData
+            let formData = new FormData(form);
+
+            // Extract URL Search params from formdata
+            const params = new URLSearchParams(formData);
+
+            // Create URL
+            const url = new URL('/weather', window.location.href)
+            // Add params string to url search 
+            url.search = params.toString()
+
+            fetch(url.href)
+            .then(res => res.json())
+            .then(data => {
+                weatherInfo.style.display = 'block'
+                // Error
+                if(data.error) {
+                    console.error(data.error);
+                    weatherInfo.innerHTML = data.error;
+                    weatherInfo.style.color = 'orange';
+                    return;
+                }
+                // Success
+                weatherInfo.style.color = 'unset'
+                weatherInfo.innerHTML = `Currently in ${params.get('address')} it looks like ${data.description}, with temprature at ${data.temp} &#8451;, and humidity at ${data.humidity}%`      
+            })
+        })
+    </script>
+</body>
+</html>

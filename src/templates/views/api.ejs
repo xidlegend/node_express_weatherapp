@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="/css/styles.css">
+    <!-- Mapbox -->
+    <script src='https://api.mapbox.com/mapbox-gl-js/v1.11.1/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v1.11.1/mapbox-gl.css' rel='stylesheet' />
+    
+    <title>Express App</title>
+    <link rel="icon" href="/images/weather.png">
+
+
+</head>
+<body>
+    <%- include('../partials/header') %> 
+
+    <div class="no-display" 
+    data-coord1="<%=coord[0]%>" 
+    data-coord2="<%=coord[1]%>">
+    </div>
+
+    <div class="container">
+        <%- include('../partials/standard') %> 
+        <!-- Mapbox Map -->
+        <div id='map' style='width: 400px; height: 300px;'></div>
+    </div>
+
+    <%- include('../partials/footer') %> 
+    
+    
+    
+    <!-- Scripts -->
+    <script src="/js/app.js"></script>
+    <!-- Mapbox -->
+    <script src="/js/mapbox.js">
+    </script>
+    <!-- Page Script -->
+    <script>
+        // Activate Navbar Link
+        document.querySelector('.api-link').classList.add('active');
+        // Set link to curent page
+        document.querySelector('.api-link').setAttribute('href', '#');
+    </script>
+</body>
+</html>
