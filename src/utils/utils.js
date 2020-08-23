@@ -1,9 +1,10 @@
 const fs = require('fs');
 const chalk = require('chalk');
 const { json } = require('express');
+const path = require('path');
 
 const getShortCode = country => {
-    const jsonPath = (__dirname + '\\countryShortCode.json')
+    const jsonPath = path.join(__dirname, 'countryShortCode.json')
     const list = JSON.parse(fs.readFileSync(jsonPath).toString());
     const shortCode = list[country.toLowerCase()];
 
