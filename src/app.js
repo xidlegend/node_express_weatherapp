@@ -1,7 +1,7 @@
 const path = require('path');
 const express = require('express');
 const axios = require ('axios');
-const PORT = 3000 || process.env.port;
+const PORT = process.env.port || 3000;
 
 // Weather utils
 const weatherMain = require ('./utils/app');
@@ -103,6 +103,6 @@ app.get('*', (req, res) => {
 
 // Listen
 app.listen(PORT, () => {
-    console.log('server running');
+    console.log('server running at port ' + PORT);
 });
 
